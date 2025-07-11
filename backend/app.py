@@ -1,9 +1,17 @@
-from flask import Flask, request, jsonify
-from flask_cors import CORS
+from flask import Flask
+import os
 import re
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all domains
+CORS(app)
+
+@app.route('/')
+def home():
+    return "API is working!"
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=os.environ.get("PORT", 5000))
+  # Enable CORS for all domains
 
 # Define phishing indicators
 RED_FLAGS = [
